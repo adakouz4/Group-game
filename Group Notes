@@ -21,6 +21,7 @@ POINT VALUES
 / Butter ~ 1 Point
 / Milk ~ 2 Pts
 / Sour Cream ~ 3 Pts
+/ Salt ~ Pauses Timer- Background Changes While Time is Paused
 
 IF EXTRA TIME:
 Levels? If we have enough time at the end of the project, add time-based levels.
