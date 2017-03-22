@@ -60,7 +60,7 @@ function create() {
     platforms.enableBody = true;
 
     // Here we create the ground.
-    var ground = platforms.create(0, game.world.height - 64, 'ground');
+    var ground = platforms.create(0, game.world.height - 32, 'ground');
 
     //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
     ground.scale.setTo(2, 2);
@@ -69,10 +69,13 @@ function create() {
     ground.body.immovable = true;
 
     //  Now let's create two ledges
-    var ledge = platforms.create(400, 400, 'ground');
+    var ledge = platforms.create(250, 480, 'ground');
     ledge.body.immovable = true;
-
-    ledge = platforms.create(-150, 250, 'ground');
+    
+    var ledge = platforms.create(0, 480, 'ground');
+    ledge.body.immovable = true;
+    
+    var ledge = platforms.create(700, 550, 'ground');
     ledge.body.immovable = true;
 
     // The player and its settings
@@ -83,7 +86,7 @@ function create() {
 
     //  Player physics properties. Give the little guy a slight bounce.
     player.body.bounce.y = 0.3;
-    player.body.gravity.y = 375;
+    player.body.gravity.y = 800;
     player.body.collideWorldBounds = true;
 
     //  Our two animations, walking left and right.
