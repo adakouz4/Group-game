@@ -77,6 +77,9 @@ function create() {
     
     var ledge = platforms.create(700, 550, 'ground');
     ledge.body.immovable = true;
+    
+    var ledge = platforms.create(0, 460, 'ground');
+    ledge.body.immovable = true;
 
     // The player and its settings
     player = game.add.sprite(32, game.world.height - 150, 'dude');
