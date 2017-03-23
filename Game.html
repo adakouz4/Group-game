@@ -70,7 +70,9 @@ function create() {
 
     
     var platformLocations = [[250, 480], [0, 480], [700, 550], [0, 460],
-                             [50, 380], [50, 300], [400, 300], [0, 225]];
+                             [50, 380], [90, 300], [400, 300], [0, 175],
+                             [110, 175], [600, 230], [-385, 450], [-390, 310]
+                             ];
     
     for (var i = 0; i < platformLocations.length; i++) {
         var ledge = platforms.create(platformLocations[i][0], platformLocations[i][1], 'ground');
@@ -171,6 +173,7 @@ function collectStar (player, star) {
     scoreText.text = 'Score: ' + score;
 
 }
+
 
 </script>
 
