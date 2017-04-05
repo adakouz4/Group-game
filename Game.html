@@ -138,14 +138,16 @@ function create() {
 	
 	  dias = game.add.group();
     dias.enableBody = true;
-    
-var dia = dias.create(10, 100, 'dia');
-    
+
+		var loc = Math.floor(Math.random() * 765);
+	
+		var dia = dias.create(loc, 100, 'dia');
+	
     dia.body.gravity.y = 800;
     dia.body.bounce.y = 0.5;
 
     //  The score
-    scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
+    scoreText = game.add.text(665, 16, 'Score: 0', { fontSize: '32px', fill: '#00b5ff'});
 
     //  Our controls.
     cursors = game.input.keyboard.createCursorKeys();
