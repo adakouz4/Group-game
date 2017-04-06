@@ -37,12 +37,15 @@ function preload() {
 		game.load.image('milk', 'assets/MILK.png');
 		game.load.image('dia', 'assets/dia.png');
     game.load.spritesheet('dude', 'assets/Potato.png', 45, 45, 9);
+	
+    game.load.audio('aud', ['assets/audio/FlyHigh.mp3', 'assets/audio/FlyHigh.ogg']);
 
 }
 
 var player;
 var platforms;
 var cursors;
+var music;
 
 var stars;
 var butters;
@@ -50,8 +53,14 @@ var milks;
 var dias;
 var score = 0;
 var scoreText;
+var time = 0;
+var timeText;
 
 function create() {
+	
+    music = game.add.audio('aud');
+
+    music.play();
 
     //  We're going to be using physics, so enable the Arcade Physics system
     game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -148,6 +157,8 @@ function create() {
 
     //  The score
     scoreText = game.add.text(665, 16, 'Score: 0', { fontSize: '32px', fill: '#00b5ff'});
+	
+		timerText = game.add.text(16, 16, '0', { fontSize: '32px', fill: '#00b5ff'});
 
     //  Our controls.
     cursors = game.input.keyboard.createCursorKeys();
@@ -244,6 +255,12 @@ function collectDia (player, dia) {
     dia.kill();
 
     player.body.gravity.y = 500;
+
+}
+
+function render() {
+	
+    game.debug.soundInfo(music, 20, 32);
 
 }
 
