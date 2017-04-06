@@ -53,8 +53,6 @@ var milks;
 var dias;
 var score = 0;
 var scoreText;
-var time = 0;
-var timeText;
 
 function create() {
 	
@@ -157,8 +155,6 @@ function create() {
 
     //  The score
     scoreText = game.add.text(665, 16, 'Score: 0', { fontSize: '32px', fill: '#00b5ff'});
-	
-		timerText = game.add.text(16, 16, '0', { fontSize: '32px', fill: '#00b5ff'});
 
     //  Our controls.
     cursors = game.input.keyboard.createCursorKeys();
