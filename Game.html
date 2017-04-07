@@ -2,7 +2,7 @@
 <html lang="en"> 
 <head> 
 	<meta charset="UTF-8" />
-    <title>Happy Potato</title>
+    <title>Happy Potato: The Game</title>
 	<script type="text/javascript" src="js/phaser.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative:700" rel="stylesheet">
     <style type="text/css">
@@ -20,7 +20,7 @@
 </head>
 <body>
     
-    <h1 class="head">Happy Potato</h1>
+    <h1 class="head">Happy Potato: The Game</h1>
 
     <br/>
     
@@ -46,7 +46,9 @@ var player;
 var platforms;
 var cursors;
 var music;
-
+var interval;
+var timer;
+    
 var stars;
 var butters;
 var milks;
@@ -110,12 +112,17 @@ function create() {
     stars = game.add.group();
     stars.enableBody = true;
     
-    var starLocations = [[100, 300]];
+/*    var starLocations = [[100, 300]];
     
     for (var i = 0; i < starLocations.length; i++) {
         var star = stars.create(starLocations[i][0], starLocations[i][1], 'star');
-    }
+    } */
     
+    var starloc = Math.floor(Math.random() * 765);
+    var starloc2 = Math.floor(Math.random() * 550);
+
+    var star = stars.create(starloc, starloc2, 'star');
+
     star.body.gravity.y = 800;
     star.body.bounce.y = 0.5;
 	
@@ -260,6 +267,13 @@ function render() {
 
 }
 
+function startTimer() {
+    interval = setInterval(function(){
+        console.log("Hi");
+    }, 1000);
+    
+}
+    
 </script>
 
 </body>
