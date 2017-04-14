@@ -38,6 +38,7 @@ function preload() {
     game.load.image('dia', 'assets/dia.png');
     game.load.spritesheet('dude', 'assets/Potato.png', 45, 45, 9);
     game.load.spritesheet('evil', 'assets/EvilPotato.png', 45, 45, 9);
+    
 	
     game.load.audio('aud', ['assets/audio/FlyHigh.mp3', 'assets/audio/FlyHigh.ogg']);
 
@@ -195,6 +196,8 @@ function update() {
 
     //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
     game.physics.arcade.overlap(player, stars, collectStar, null, this);
+    
+    game.physics.arcade.overlap(player, evilplayer, killPlayer, null, this);
 
     game.physics.arcade.overlap(player, butters, collectButter, null, this);
 	
@@ -239,16 +242,16 @@ function update() {
     if (cursors.left.isDown)
     {
         //  Move to the left
-        evilplayer.body.velocity.x = -150;
+        evilplayer.body.velocity.x = 150;
 
-        evilplayer.animations.play('left');
+        evilplayer.animations.play('right');
     }
     else if (cursors.right.isDown)
     {
         //  Move to the right
-        evilplayer.body.velocity.x = 150;
+        evilplayer.body.velocity.x = -150;
 
-        evilplayer.animations.play('right');
+        evilplayer.animations.play('left');
     }
     else
     {
@@ -267,6 +270,13 @@ function update() {
 }
 
 
+function killPlayer (player, evilplayer) {
+    
+    // Kills the player
+    evilplayer.kill();
+    
+}
+    
 function collectStar (player, star) {
     
     // Removes the star from the screen
