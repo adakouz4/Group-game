@@ -36,6 +36,7 @@ function preload() {
     game.load.image('butter', 'assets/BUTTER.png');
     game.load.image('milk', 'assets/MILK.png');
     game.load.image('dia', 'assets/dia.png');
+    game.load.image('door', 'assets/door.png');
     game.load.spritesheet('dude', 'assets/Potato.png', 45, 45, 20);
     game.load.spritesheet('evil', 'assets/EvilPotato.png', 45, 45, 9);
     
@@ -52,7 +53,8 @@ var music;
 var interval;
 var timerText;
 var timer = 120;
-    
+
+var doors;
 var stars;
 var butters;
 var milks;
@@ -171,6 +173,17 @@ function create() {
 	
     dia.body.gravity.y = 800;
     dia.body.bounce.y = 0.5;
+    
+    doors = game.add.group();
+    doors.enableBody = true;
+    
+    var doorLocations = [[750, 0]];
+    
+    for (var i = 0; i < doorLocations.length; i++) {
+        var door = doors.create(doorLocations[i][0], doorLocations[i][1], 'door');
+    }
+    
+    door.body.gravity.y = 800;
 
     //  The score
     scoreText = game.add.text(665, 16, 'Score: 0', { fontSize: '32px', fill: '#00b5ff'});
@@ -192,6 +205,7 @@ function update() {
     game.physics.arcade.collide(butters, platforms);
     game.physics.arcade.collide(milks, platforms);
     game.physics.arcade.collide(dias, platforms);
+    game.physics.arcade.collide(doors, platforms);
 
     //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
     game.physics.arcade.overlap(player, stars, collectStar, null, this);
@@ -203,6 +217,8 @@ function update() {
     game.physics.arcade.overlap(player, milks, collectMilk, null, this);
 	
     game.physics.arcade.overlap(player, dias, collectDia, null, this);
+    
+    game.physics.arcade.overlap(player, doors, exitDoor, null, this);
 	
     //  Reset the players velocity (movement)
     player.body.velocity.x = 0;
@@ -286,6 +302,13 @@ function killPlayer (player, evilplayer) {
     
 }
 
+function exitDoor (player, door) {
+    
+    // Removes the star from the screen
+    player.kill();
+
+}
+    
 function collectStar (player, star) {
     
     // Removes the star from the screen
