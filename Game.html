@@ -380,7 +380,8 @@ var x = setInterval(function() {
     seconds--;
     
     // If the count down is over, write some text 
-    if (seconds = 0) {
+    if (seconds == 0) {
+        console.log("End");
         killPlayer();
     }
 }, 1000);
