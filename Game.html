@@ -126,19 +126,14 @@ function create() {
     stars = game.add.group();
     stars.enableBody = true;
     
-/*    var starLocations = [[100, 300]];
+    var starLocations = [[300, 300]];
     
     for (var i = 0; i < starLocations.length; i++) {
         var star = stars.create(starLocations[i][0], starLocations[i][1], 'star');
-    } */
+    }
     
-    var starloc = Math.floor(Math.random() * 765);
-    var starloc2 = Math.floor(Math.random() * 550);
-
-    var star = stars.create(starloc, starloc2, 'star');
-
-    star.body.gravity.y = 800;
-    star.body.bounce.y = 0.5;
+    butter.body.gravity.y = 800;
+    butter.body.bounce.y = 0.5;
 	
     butters = game.add.group();
     butters.enableBody = true;
@@ -395,8 +390,9 @@ var x = setInterval(function() {
     seconds--;
     
     // If the count down is over, write some text 
-    if (seconds == -1) {
+    if (seconds == ) {
         clearInterval(x);
+        
     }
 }, 1000);
 </script>
