@@ -52,7 +52,8 @@ var cursors;
 var music;
 var interval;
 var timerText;
-var timer = 120;
+var x;
+var timer = 4;
     
 var doors;
 var stars;
@@ -132,8 +133,8 @@ function create() {
         var star = stars.create(starLocations[i][0], starLocations[i][1], 'star');
     }
     
-    butter.body.gravity.y = 800;
-    butter.body.bounce.y = 0.5;
+    star.body.gravity.y = 800;
+    star.body.bounce.y = 0.5;
 	
     butters = game.add.group();
     butters.enableBody = true;
@@ -355,7 +356,7 @@ function render() {
 }
 
 function startTimer() {
-    timer = 120;
+    timer = 4;
     interval = setInterval(function(){
     timerText.text = timer--;
     }, 1000);
@@ -375,7 +376,7 @@ startTimer();
 
 <script>
 
-var seconds = 120;
+var seconds = 4;
 
 
 // Update the count down every 1 second
@@ -390,11 +391,11 @@ var x = setInterval(function() {
     seconds--;
     
     // If the count down is over, write some text 
-    if (seconds == ) {
-        clearInterval(x);
-        
+    if (seconds = 0) {
+        killPlayer();
     }
 }, 1000);
+    
 </script>
 
 </body>
