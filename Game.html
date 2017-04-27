@@ -291,6 +291,7 @@ function update() {
 function killPlayer (player, evilplayer) {
     
     player.kill();
+    evilplayer.kill();
     
     platforms.forEach(function(platform) {
         platform.body.immovable = false;
