@@ -93,7 +93,7 @@ function create() {
     var platformLocations = [[250, 480], [0, 480], [700, 550], [0, 460],
                              [75, 380], [90, 300], [400, 300], [0, 175],
                              [110, 175], [600, 230], [-385, 450], [-390, 310], 
-                             [400, 70]];
+                             [400, 70], [700, 390]];
     
     for (var i = 0; i < platformLocations.length; i++) {
         var ledge = platforms.create(platformLocations[i][0], platformLocations[i][1], 'ground');
@@ -102,7 +102,7 @@ function create() {
     
     // The player and its settings
     player = game.add.sprite(30, game.world.height - 75, 'dude');
-    evilplayer = game.add.sprite(760, game.world.height - 400, 'evil');
+    evilplayer = game.add.sprite(750, game.world.height - 390, 'evil');
 
     //  We need to enable physics on the player
     game.physics.arcade.enable(player);
@@ -127,7 +127,7 @@ function create() {
     stars = game.add.group();
     stars.enableBody = true;
     
-    var starLocations = [[300, 300]];
+    var starLocations = [[740, 340]];
     
     for (var i = 0; i < starLocations.length; i++) {
         var star = stars.create(starLocations[i][0], starLocations[i][1], 'star');
@@ -361,16 +361,20 @@ function startTimer() {
     interval = setInterval(function(){
     timerText.text = timer--;
     }, 1000);
-    
 }
     
 startTimer();
 
+if (timer == 0) {
+    killPlayer();
+}
+    
+/*
 var seconds = 4;
 
 
 // Update the count down every 1 second
-var x = setInterval(function() {
+ var x = setInterval(function() {
 
     // Get todays date and time
     var now = new Date().getTime();
@@ -382,10 +386,10 @@ var x = setInterval(function() {
     
     // If the count down is over, write some text 
     if (seconds == 0) {
-        console.log("End");
+        
         killPlayer();
     }
-}, 1000);
+}, 1000); */
     
 </script>
 	
