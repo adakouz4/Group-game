@@ -53,7 +53,7 @@ var music;
 var interval;
 var timerText;
 var x;
-var timer = 4;
+var timer;
     
 var doors;
 var stars;
@@ -288,7 +288,7 @@ function update() {
 
 }
   
-function killPlayer (player, evilplayer) {
+function killPlayer () {
     
     player.kill();
     evilplayer.kill();
@@ -296,7 +296,7 @@ function killPlayer (player, evilplayer) {
     platforms.forEach(function(platform) {
         platform.body.immovable = false;
     });
-    
+
 }
 
 function exitDoor (player, door) {
@@ -312,7 +312,7 @@ function collectStar (player, star) {
     star.kill();
 
     //  Add and update the score
-    score += 3;
+    score += 10;
     scoreText.text = 'Score: ' + score;
     
     timer + 10;
@@ -357,39 +357,20 @@ function render() {
 }
 
 function startTimer() {
-    timer = 4;
+    timer = 120;
     interval = setInterval(function(){
-    timerText.text = timer--;
+    if (timer >= 0) {
+        timerText.text = timer.toString();
+    }
+    else {
+        killPlayer();
+        clearInterval(timer);
+    }
+    timer--;
     }, 1000);
 }
-    
+
 startTimer();
-
-if (timer == 0) {
-    killPlayer();
-}
-    
-/*
-var seconds = 4;
-
-
-// Update the count down every 1 second
- var x = setInterval(function() {
-
-    // Get todays date and time
-    var now = new Date().getTime();
-    
-    // Output the result in an element with id="demo"
-    document.getElementById("demo").innerHTML = seconds + "s ";
-    
-    seconds--;
-    
-    // If the count down is over, write some text 
-    if (seconds == 0) {
-        
-        killPlayer();
-    }
-}, 1000); */
     
 </script>
 	
