@@ -296,6 +296,8 @@ function killPlayer () {
     platforms.forEach(function(platform) {
         platform.body.immovable = false;
     });
+    
+    timer = 0;
 
 }
 
@@ -303,6 +305,8 @@ function exitDoor (player, door) {
     
     // Removes the star from the screen
     player.kill();
+    
+    timer = 0;
 
 }
     
