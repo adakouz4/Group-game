@@ -295,11 +295,14 @@ function killPlayer () {
     evilplayer.kill();
     
     platforms.forEach(function(platform) {
-        platform.body.immovable = false;
+    platform.body.immovable = false;
     });
     
     timer = 0;
-game.add.sprite(0,0,"GameOver");
+    
+    interval = setInterval(function(){
+    game.add.sprite(0,0,"GameOver");
+    }, 3000);
 }
 
 function exitDoor (player, door) {
@@ -376,7 +379,7 @@ function startTimer() {
 }
 
 startTimer();
-    
+
 </script>
 	
 </body>
