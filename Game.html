@@ -295,14 +295,14 @@ function killPlayer () {
     evilplayer.kill();
     
     platforms.forEach(function(platform) {
-    platform.body.immovable = false;
+        platform.body.immovable = false;
     });
     
     timer = 0;
     
-    interval = setInterval(function(){
-    game.add.sprite(0,0,"GameOver");
-    }, 3000);
+    setTimeout(function() { game.add.sprite(0, 0, "GameOver"); }, 3000);
+    setTimeout(function() { location.reload(); }, 6000);
+        
 }
 
 function exitDoor (player, door) {
@@ -355,6 +355,10 @@ function collectDia (player, dia) {
     dia.kill();
 
     player.body.gravity.y = -300;
+    
+    doors.forEach(function(door) {
+        door.position.x = 0;
+    });
 
 }
 
@@ -365,7 +369,7 @@ function render() {
 }
 
 function startTimer() {
-    timer = 120;
+    timer = 45;
     interval = setInterval(function(){
     if (timer >= 0) {
         timerText.text = timer.toString();
