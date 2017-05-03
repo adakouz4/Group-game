@@ -31,6 +31,7 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create
 function preload() {
 
     game.load.image('sky', 'assets/kitchen.png');
+	game.load.image('GameOver', 'assets/GameOver.gif');
     game.load.image('ground', 'assets/blue.jpg');
     game.load.image('star', 'assets/sourCream.png');
     game.load.image('butter', 'assets/BUTTER.png');
@@ -298,7 +299,7 @@ function killPlayer () {
     });
     
     timer = 0;
-
+game.add.sprite(0,0,"GameOver");
 }
 
 function exitDoor (player, door) {
